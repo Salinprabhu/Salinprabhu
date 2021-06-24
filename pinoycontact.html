@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pinoy Heart Radio|Contact</title>
+    <meta name="description" content="pinoycontact">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel='stylesheet' type="text/css" href="./css/bootstrap.min.css">      
+    <link rel='stylesheet' type="text/css" href="./style.css">
+</head>
+<body id="ExHome">
+    <div class="contactrow">
+        <div class="contactcolumn">
+        </div>  
+        <div class="contactcolumn">
+            <div class="CTus">
+                <h4>For any comments, suggestions or inquiries please email us at <span class="email">pinoyheartradio@gmail.com</span><br>
+                <span>NOTE: </span>Please don't forget to attach your email or any contact details to send our reply.</h4>
+           </div>
+           <div class="ContForm">
+               <div class="modal-content">
+                   <div class="modal-body">
+                       <form id="submit-form" action="">
+                           <label for="fname">
+                               Name :</label>
+                           <input type="text" class="form-control"
+                           id="fname" name="name" required maxlength="50" placeholder="Your name..">
+                       <label for="subject">
+                               Subject :</label>
+                           <input type="text" class="form-control"
+                           id="subject" name="subject"   required maxlength="50" placeholder="Subject..">        
+                       <label for="lname">
+                               Email :</label>
+                           <input type="email" class="form-control" placeholder="Your Email ID.."
+                           id="lname" name="email" required maxlength="50">        
+                       <label for="message">
+                               Message :</label>
+                           <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Your Message here.."
+                           maxlength="3000" rows="4" required minlength="10"></textarea>
+                       <button type="submit" id="btnContactUs" value="Submit">Submit</button>
+                       </form>
+                       <div id="success_message" style="width:100%; height:100%; display:none; ">
+                           <h3>Sent your message successfully!</h3>
+                       </div>
+                       <div id="error_message"
+                       style="width:100%; height:100%; display:none; ">
+                           <h3>Error</h3>
+                           Sorry there was an error sending your form.
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+        <div class="contactcolumn">
+        </div> 
+    </div> 
+<!--=================================Scripts=====================================================-->
+<script src="./js/bootstrap.min.js"></script> 
+<script src="./js/jquery-3.6.0.js"></script>
+<script>
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbxF6-ohim9PqiIRlyC5YKijFlH9GMjCV5PKsKHEmPBToybr9IcPhvBpbnYGqW5bNze-OQ/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",          
+            success:function (response){
+                alert("Your message sent successfully!")
+                document.getElementById("fname").value = '';
+                document.getElementById("subject").value = '';   
+                document.getElementById("lname").value = '';   
+                document.getElementById("message").value = '';   
+            },
+            error:function (err){
+                alert("Something Error")
+            }
+        })
+    })
+</script>
+<script>
+    $('document').ready(function() {
+        $(window).scrollTop(0,0);
+    });
+    $('body').on('dragstart drop', function(e){
+        e.preventDefault();
+        return false;
+    });
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
+</script>
+<!--=================================Scripts=====================================================--> 
+</body>
+</html>

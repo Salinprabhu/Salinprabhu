@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="pinoydjpanel">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type="text/css" href="./style.css">
+</head>
+<body id="ExHome">
+    <div class="Djhomerow">
+        <div class="djhomecolum">
+        </div>
+        <div class="djhomecolum">
+            <section class="DJSection">
+                <div class="loginbox">
+                    <div class="sqarebox" style="--i:0"></div>
+                    <div class="sqarebox" style="--i:1"></div>
+                    <div class="sqarebox" style="--i:2"></div>
+                    <div class="sqarebox" style="--i:3"></div>
+                    <div class="logincontainer">
+                        <div class="logform">
+                            <h2>Dj's Panel Login</h2>
+                            <form id="login-form"action="">
+                                <textarea type="text" hidden=true class="form-control" name="Actionmode" value="GetLogin">GetLogin</textarea>
+                                <div class="inputbox">
+                                    <input type="text" id ="Username" name="Username" placeholder="User Name" required minlength="2" >
+                                </div>
+                                <div class="inputbox">
+                                    <input type="password" id ="Password" name="Password" placeholder="Password" required minlength="2">
+                                </div>
+                                <div class="inputbox">
+                                    <input type="submit" onclick="CheckLogin()" value="LOGIN">
+                                </div>
+                            </form>
+                        </div>                
+                    </div>            
+                </div>                
+            </section>          
+        </div>
+        <div class="djhomecolum">            
+        </div>
+    </div>
+    <div class="djinnerrow">
+        <div class="djinnercol"></div>
+        <div class="djinnercol">
+            <div class="WelText">
+                <h1>Hi  &nbsp;<a id = "Sccname" href=""></a> ! Welcome to Dj's Panel </h1>
+            </div>
+            <div class="Status">
+                <h2 id="StatusVal">Status</h2>
+               </div>
+               <div id="Stmap"></div>
+            <div class="ControlButton">   
+                <button id="btstart" class="big-buttonstop" onclick="changeRegion('//www.voscast.com/api/?key=e555eb9a0c3388a0b89adeadd859033c&action=start')" type="submit">Start</button>                 
+                <button id="btstop" class="big-buttonStart" onclick="changeRegion1('//voscast.com/api/?key=e555eb9a0c3388a0b89adeadd859033c&amp;action=stop')" type="submit">Stop</button>
+            </div>
+            <div class="instruction">
+                <p>
+                    <h4>R E M I N D E R S:</h4>
+                    <h6>1. Double check your Sponsors list & update before you go on air.</h6>
+                    <h6>2. Don't play any commercials which are not in our list anymore.</h6>
+                    <h6>3. You may click the START button after you have the radio, 
+                         so that the Robocat shall be able to connect on the radio just in case you 
+                         loss your connection.</h6>
+                </p>
+            </div>    
+       </div>
+       <div class="djinnercol">
+        <div class="UserInterface">
+            <div class="ChangePass">
+                <input type="button" id="btnPass" class="btn btn-default" value="Change Password">
+            </div>                    
+            <div id="ChangePass" style="display:none">
+                <form id="ChangPass-form"action="">
+                    <textarea type="text" hidden=true class="form-control" name="Actionmode" value="EditLogin">EditLogin</textarea>
+                    <textarea type="text" hidden=true class="form-control" id="CUsername" name="Username" required maxlength="50" value=""></textarea>
+                    <div class="inputbox">
+                        <input type="password" id ="CPassword" name="Password" placeholder="Password" required minlength="2">
+                    </div>
+                    <div class="Submitbox">
+                        <button type="submit" class="btnChange" onclick="EditLogin()" value="Change">Change</button>
+                    </div>                          
+                </form>
+            </div>
+        </div>
+       </div>
+   </div>
+<!-- ================================================Scripts=============================================-->
+<script src="./js/jquery-3.6.0.js"></script>
+<script src="./js/djlog.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function changeRegion(value)
+    {
+        var usrIp = localStorage.getItem("usrIp");
+        var usrCountry = localStorage.getItem("usrCountry");
+        var usrCity = localStorage.getItem("usrCity");
+        let sr = document.getElementById('Stmap');
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src ="https:"+ value;
+        s.innerHTML = null;
+        s.id = "Stmaps"; 
+        document.getElementById('Stmap').appendChild(s);
+        document.getElementById("StatusVal").innerHTML = "Please Wait.."
+        let user = document.getElementById("Sccname").innerHTML;         
+        var logdata = {"Username":user,"Password":"no","UserCountry":usrCountry,"UserIp":usrIp,"UserCity":usrCity,"Actionmode":"Logging","ActionType":"Start"}  
+        $.ajax({                 
+            url:"https://script.google.com/macros/s/AKfycbwWhlk7YfLkUNxUx4kYbjfGqOggPJFG7BW03PYQVuG5p3OWtkkHGY8FljcBkM_gSJCd/exec",            
+            data:logdata,
+            method:"post",
+            dataType:'json',
+            success:function (response){                
+            },
+            error:function (err){
+                alert("Something Error")
+            }
+        })
+        document.getElementById("StatusVal").innerHTML = "Started.."
+    }
+</script>
+<script type="text/javascript">
+    function changeRegion1(value)
+    {
+        var usrIp = localStorage.getItem("usrIp");
+        var usrCountry = localStorage.getItem("usrCountry");
+        var usrCity = localStorage.getItem("usrCity");
+        let sr = document.getElementById('Stmap');
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src ="https:"+ value;
+        s.innerHTML = null;
+        s.id = "Stmaps";
+        document.getElementById('Stmap').appendChild(s);
+        document.getElementById("StatusVal").innerHTML = "Please Wait.."
+        let user = document.getElementById("Sccname").innerHTML;
+        var logdata = {"Username":user,"Password":"no","UserCountry":usrCountry,"UserIp":usrIp,"UserCity":usrCity,"Actionmode":"Logging","ActionType":"Stop"}  
+        $.ajax({                 
+            url:"https://script.google.com/macros/s/AKfycbwWhlk7YfLkUNxUx4kYbjfGqOggPJFG7BW03PYQVuG5p3OWtkkHGY8FljcBkM_gSJCd/exec",            
+            data:logdata,
+            method:"post",
+            dataType:'json',
+            success:function (response){                
+            },
+            error:function (err){
+                alert("Something Error")
+            }
+        })
+        document.getElementById("StatusVal").innerHTML = "Stopped.."
+    }
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#btnPass").click(function () {
+        $("#ChangePass").toggle();
+    });
+});
+</script>
+<script>
+    $('document').ready(function() {
+        $(window).scrollTop(0,0);
+    });
+    $('body').on('dragstart drop', function(e){
+        e.preventDefault();
+        return false;
+    });
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
+</script>
+<!-- ================================================Scripts=============================================-->  
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+    "name": "PinoyHeartRadio",
+    "short_name": "PHR",
+    "start_url": "index.php",
+    "display": "standalone",
+    "background_color": "#fdfdfd",
+    "theme_color": "#db4938",
+    "scope": "/",
+    "orientation": "portrait-primary",
+    "icons": [
+      {
+        "src": "./image/apps/72.png",
+        "type": "image/png", "sizes": "72x72"
+      },
+      {
+        "src": "./image/apps/96.png",
+        "type": "image/png", "sizes": "96x96"
+      },
+      {
+        "src": "./image/apps/128.png",
+        "type": "image/png","sizes": "128x128"
+      },
+      {
+        "src": "./image/apps/144.png",
+        "type": "image/png", "sizes": "144x144"
+      },
+      {
+        "src": "./image/apps/152.png",
+        "type": "image/png", "sizes": "152x152"
+      },
+      {
+        "src": "./image/apps/192.png",
+        "type": "image/png", "sizes": "192x192"
+      },
+      {
+        "src": "./image/apps/256.png",
+        "type": "image/png", "sizes": "256x256"
+      },
+      {
+        "src": "./image/apps/512.png",
+        "type": "image/png", "sizes": "512x512"
+      }
+    ]
+  }

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinoy Heart Radio</title>
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="description" content="index">
+    <link rel="apple-touch-icon" href="./image/apps/72.png"/>
+    <link rel="apple-touch-icon" href="./image/apps/96.png"/>
+    <link rel="apple-touch-icon" href="./image/apps/128.png"/>
+    <link rel="apple-touch-icon" href="./image/apps/144.png"/>
+    <link rel="apple-touch-icon" href="./image/apps/152.png"/>
+    <link rel="apple-touch-icon" href="./image/apps/192.png"/>
+    <link rel="apple-touch-icon" href="./image/apps/256.png"/>
+    <link rel="apple-touch-icon" href="./image/apps/512.png"/>
+    <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
+    <meta name="theme-color" content="#db4938"/>
+    <link href="./image/Logo.png" rel="icon">
+    <link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>-->
+    <link rel="stylesheet" href="./css/indexstyle.css">
+</head>
+<body id="main-home">
+<div id="loader-wrapper">
+    <div class="loader-logo">
+        <img src="./image/Logo.png" alt="HeadLogo">
+    </div>
+    <div id="loader"></div>     
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>     
+</div>
+    <div id="main-container">
+        <div class="header-container">
+            <div class="header-items">            
+                <div class="logo-container">
+                    <div class="main-logo"><img src="./image/Logo.png" alt="Logo"></div>
+                </div>
+                <div class="title-container">
+                    <h2 class="logoText">Pinoy Heart Radio</h2>
+                </div>
+                    <?php include ('pinoynav.php'); ?>
+                <!--<div class="menu-container">
+                    <nav>
+                        <ul>
+                            <li><a target="loadpages" id="mainHome" class="active" href="./home.php">Home</a></li>
+                            <li><a id="Outrea" target="loadpages" href="./Outreachprogram.php">Outreach</a></li>
+                            <li><a id="Activty" target="loadpages" href="./PinoyActivity.php">Activities</a></li>
+                            <li><a id="ctUs" target="loadpages" href="./pinoycontact.html">Contact Us</a></li>
+                            <li><a id="DJP" target="loadpages" href="./pinoydjpanel.html">Dj's Panel</a></li>
+                        </ul>
+                    </nav>
+                    <div class="menu-toggle"><i class="fa fa-bars"></i></div>
+                </div>-->
+            </div>       
+        </div>
+        <div class="main-container">
+            <iframe id="main-loadframe" title="pinoypages" src="./home.php" frameborder="0" name="loadpages" ></iframe>
+        </div>
+        <div class="footer-container">
+            <div class="audio-action">
+                <span class="fa fa-music my-float"></span>                
+            </div>
+            <div class="action-control">
+                <ul>
+                    <li><i id="btnpause" class="fa fa-pause"></i></li>
+                    <li><i id="btnplay" class="fa fa-play"></i></li>
+                    <li><i id="btnstop" class="fa fa-stop"></i></li>
+                    <li><i id="mute" onclick="mute()" class="fa fa-volume-up"></i></li>
+                    <li><input aria-label="Justify" type="range" id="volume" oninput="setVolume(this.value)" min="0" max="1" step="0.01" value="1"></li>
+                </ul>
+            </div>
+            <div class="footerlink">
+                <div class="footermenubar">
+                    <a id="recong" target="loadpages" href="./Pinoyrecognitions.php">Recognitions</a>
+                    <a id="OrgChatt" target="loadpages" href="./pinoyOrganizationChart.html">Organizational Chart</a>
+                    <a id="Abtus" target="loadpages" href="./pinoyaboutus.html">About Us</a>
+                    <a id="priv" target="loadpages" href="./pinoyPrivacy.html">Privacy</a>       
+                </div>                             
+            </div>
+            <div class="footer-copyright">
+                <div class="main-copyright">
+                    Copyright &nbsp; <strong> &copy; Pinoy Heart Radio 2013-2021</strong>. &nbsp; All Rights Reserved.
+                </div>
+                <div class="main-power">
+                    Design & Powered by &nbsp;<a href="https://synergysoftsolution.tk/" target="_blank" rel="noreferrer">SynergySoft <span>Solutions</span></a>                  
+                </div>
+            </div>  
+        </div>
+    </div>
+<!-- =================================================Scripts=====================================================-->
+<script rel="preload" src="./js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="./index.js"></script>
+<script rel="preload" src="./player.js"></script>
+<script type="text/javascript">
+    if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function() {
+      navigator.serviceWorker
+        .register("/serviceWorker.js")        
+    })
+  }
+</script>
+<!-- =================================================Scripts=====================================================-->
+</body>
+</html>
